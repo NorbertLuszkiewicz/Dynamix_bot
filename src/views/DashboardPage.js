@@ -185,7 +185,7 @@ const DashboardPage = (props) => {
 
   useEffect(() => {
     !account && dispatch(getAccount(name, token));
-  }, []);
+  }, [account, name, dispatch, token]);
 
   return account ? (
     <PageTemplate>
@@ -215,7 +215,11 @@ const DashboardPage = (props) => {
               </p>
               <small style={{ margin: '10px 0 15px' }}>
                 {'Account ID jak i JWT Token znajdziesz pod adresem '}
-                <a href="https://streamelements.com/dashboard/account/channels" target="_blank">
+                <a
+                  href="https://streamelements.com/dashboard/account/channels"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   https://streamelements.com/dashboard/account/channels
                 </a>
                 <br />

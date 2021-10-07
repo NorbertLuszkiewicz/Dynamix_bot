@@ -89,7 +89,7 @@ const HomePage = () => {
     return () => {
       window.removeEventListener('click', closeHandler);
     };
-  }, []);
+  }, [account, dispatch, name, token]);
 
   return (
     <PageTemplate>
