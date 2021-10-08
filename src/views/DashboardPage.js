@@ -184,7 +184,7 @@ const DashboardPage = (props) => {
   };
 
   useEffect(() => {
-    !account && dispatch(getAccount(name, token));
+    dispatch(getAccount(name, token));
   }, [account, name, dispatch, token]);
 
   return account ? (
