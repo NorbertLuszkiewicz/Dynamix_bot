@@ -185,7 +185,7 @@ const DashboardPage = (props) => {
 
   useEffect(() => {
     dispatch(getAccount(name, token));
-  }, [account, name, dispatch, token]);
+  }, []);
 
   return account ? (
     <PageTemplate>
