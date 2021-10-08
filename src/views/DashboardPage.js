@@ -169,11 +169,8 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
 
-  let isStreamElements = null;
-
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
-    isStreamElements = true;
     reset();
   };
 
@@ -196,9 +193,7 @@ const DashboardPage = (props) => {
         <StatusBox>
           <Status isActive={account.twitchAccessToken}>Twitch</Status>
           <Status isActive={account.spotifyRefreshToken}>Spotify</Status>
-          <Status isActive={account.clientSongRequestSecret || isStreamElements}>
-            Stream Elements
-          </Status>
+          <Status isActive={account.clientSongRequestSecret}>Stream Elements</Status>
           <Status isActive={null}>Riot Games</Status>
         </StatusBox>
         <h3>Połącz się ze Spotify i Stream Elements, aby mieć kontrole nad przepływem piosenek.</h3>
