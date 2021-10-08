@@ -175,7 +175,6 @@ const DashboardPage = (props) => {
   };
 
   const addChangeVolumeAwardSubmit = ({ min, max, minSR, maxSR, time }) => {
-    console.log(min, max, minSR, maxSR, time, account.streamer);
     dispatch(addChangeVolumeAward(min, max, minSR, maxSR, time, account.streamer));
   };
 
