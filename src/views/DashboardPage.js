@@ -203,6 +203,10 @@ const DashboardPage = (props) => {
         <GridBox>
           <FlexBox>
             <p>Połącz się z Spotify klikając przycisk poniżej</p>
+            <p>
+              Ważne na pv na discord {'(Dynamix #1054)'} wyślij mi email na którym jest spotify aby
+              sprawdzić kliknij w prawym górnym rogu na swój nick {'->'} konto
+            </p>
             <Button isSpotify={true} onClick={connectSpotify}>
               <Icon src={spotifyLogo} alt="logo Spotify" /> Spotify
             </Button>
