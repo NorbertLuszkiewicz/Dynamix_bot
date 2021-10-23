@@ -121,6 +121,13 @@ const Form = styled.form`
   width: 100%;
   min-width: 280px;
   display: grid;
+  margin: auto;
+`;
+
+const Select = styled.select`
+  width: 140px;
+  margin: 10px;
+  height: 30px;
 `;
 
 const Label = styled.label`
@@ -339,32 +346,34 @@ const DashboardPage = (props) => {
           Połącz się z kontem Riot Games, aby móc puszczać automatyczne reklamy po zakończonym meczu
           oraz, aby móc korzystać z komend !matches i !match
         </h3>
-        <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
-          <GridBox>
-            <Input
-              style={{ maxWidth: '100px' }}
-              type="text"
-              placeholder="nickname"
-              {...registerRiot('name', { required: true })}
-            />
-            {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
-            <select style={{ maxWidth: '50px' }} {...registerRiot('server')}>
-              <option value={'EUW1'}>EUW</option>
-              <option value={'EUN1'}>EUNE</option>
-              <option value={'NA1'}>NA</option>
-              <option value={'KR'}>KR</option>
-            </select>
-          </GridBox>
-          <Button type="submit">Add account</Button>
-        </Form>
-        <div>
-          Lista kont:
-          {account.riotAccountList.forEach((riotAccount) => (
-            <p>
-              `{riotAccount.name} ({riotAccount.name})`
-            </p>
-          ))}
-        </div>
+        <FlexBox>
+          <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
+            <GridBox>
+              <Input
+                style={{ width: '400px' }}
+                type="text"
+                placeholder="nickname"
+                {...registerRiot('name', { required: true })}
+              />
+              {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
+              <Select {...registerRiot('server')}>
+                <option value={'EUW1'}>EUW</option>
+                <option value={'EUN1'}>EUNE</option>
+                <option value={'NA1'}>NA</option>
+                <option value={'KR'}>KR</option>
+              </Select>
+            </GridBox>
+            <Button type="submit">Add account</Button>
+          </Form>
+          <div>
+            <h3>Lista kont:</h3>
+            {account.riotAccountList.forEach((riotAccount) => (
+              <p>
+                `{riotAccount.name} ({riotAccount.name})`
+              </p>
+            ))}
+          </div>
+        </FlexBox>
         <h3>
           Dodaj skandowanie w wybranych przez siebie momentach np. koniec meczu, subskrybcja w
           prezencie, raid.
