@@ -188,6 +188,7 @@ const DashboardPage = (props) => {
 
   const addRiotSubmit = ({ name, server }) => {
     dispatch(addRiotAccount(name, server, account.streamer));
+    dispatch(getAccount(name, token));
   };
 
   const connectSpotify = () => {
