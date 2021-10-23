@@ -168,7 +168,7 @@ const DashboardPage = (props) => {
   } = useForm({ defaultValues: { clientID: '', token: '' } });
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
-  const { register: registerRiot, handleSubmit: handleSubmitRiot, getValues } = useForm();
+  const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -342,16 +342,21 @@ const DashboardPage = (props) => {
         <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
           <Input type="text" placeholder="nickname" {...registerRiot('name', { required: true })} />
           {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
-          <Select name="server" options={['EUW', 'EUNE', 'NA', 'KR']} />
+          <select {...registerRiot('server')}>
+            <option value={'EUW1'}>EUW</option>
+            <option value={'EUN1'}>EUNE</option>
+            <option value={'NA1'}>NA</option>
+            <option value={'KR'}>KR</option>
+          </select>
           <Button type="submit">Add account</Button>
         </Form>
         <div>
           Lista kont:
-          {account.riotAccountList.forEach((riotAccount) => {
+          {account.riotAccountList.forEach((riotAccount) => (
             <p>
               `{riotAccount.name} ({riotAccount.name})`
-            </p>;
-          })}
+            </p>
+          ))}
         </div>
         <h3>
           Dodaj skandowanie w wybranych przez siebie momentach np. koniec meczu, subskrybcja w
