@@ -367,7 +367,7 @@ const DashboardPage = (props) => {
             <h3>Lista kont:</h3>
             {account.riotAccountList.forEach((riotAccount) => (
               <p>
-                `{riotAccount.name} ({riotAccount.name})`
+                {riotAccount.name} {'(' + riotAccount.name + ')'}
               </p>
             ))}
           </div>
