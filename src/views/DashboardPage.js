@@ -348,21 +348,19 @@ const DashboardPage = (props) => {
         </h3>
         <FlexBox>
           <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
-            <GridBox>
-              <Input
-                style={{ width: '400px' }}
-                type="text"
-                placeholder="nickname"
-                {...registerRiot('name', { required: true })}
-              />
-              {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
-              <Select {...registerRiot('server')}>
-                <option value={'EUW1'}>EUW</option>
-                <option value={'EUN1'}>EUNE</option>
-                <option value={'NA1'}>NA</option>
-                <option value={'KR'}>KR</option>
-              </Select>
-            </GridBox>
+            <Input
+              style={{ width: '400px' }}
+              type="text"
+              placeholder="nickname"
+              {...registerRiot('name', { required: true })}
+            />
+            <Select {...registerRiot('server')}>
+              <option value={'EUW1'}>EUW</option>
+              <option value={'EUN1'}>EUNE</option>
+              <option value={'NA1'}>NA</option>
+              <option value={'KR'}>KR</option>
+            </Select>
+
             <Button type="submit">Add account</Button>
           </Form>
           <div>
