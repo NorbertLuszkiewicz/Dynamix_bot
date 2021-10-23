@@ -340,14 +340,21 @@ const DashboardPage = (props) => {
           oraz, aby móc korzystać z komend !matches i !match
         </h3>
         <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
-          <Input type="text" placeholder="nickname" {...registerRiot('name', { required: true })} />
-          {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
-          <select {...registerRiot('server')}>
-            <option value={'EUW1'}>EUW</option>
-            <option value={'EUN1'}>EUNE</option>
-            <option value={'NA1'}>NA</option>
-            <option value={'KR'}>KR</option>
-          </select>
+          <GridBox>
+            <Input
+              style={{ maxWidth: '100px' }}
+              type="text"
+              placeholder="nickname"
+              {...registerRiot('name', { required: true })}
+            />
+            {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
+            <select style={{ maxWidth: '50px' }} {...registerRiot('server')}>
+              <option value={'EUW1'}>EUW</option>
+              <option value={'EUN1'}>EUNE</option>
+              <option value={'NA1'}>NA</option>
+              <option value={'KR'}>KR</option>
+            </select>
+          </GridBox>
           <Button type="submit">Add account</Button>
         </Form>
         <div>
