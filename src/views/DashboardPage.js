@@ -6,7 +6,7 @@ import PageTemplate from 'templates/PageTemplates';
 import { Redirect } from 'react-router';
 import { getAccount } from 'actions';
 import spotifyLogo from 'assets/spotify.svg';
-import { connectStreamElements, addChangeVolumeAward } from '../actions';
+import { connectStreamElements, addChangeVolumeAward, addRiotAccount } from '../actions';
 
 const Wrapper = styled.main`
   display: grid;
@@ -168,6 +168,7 @@ const DashboardPage = (props) => {
   } = useForm({ defaultValues: { clientID: '', token: '' } });
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
+  const { register: registerRiot, handleSubmit: handleSubmitRiot, getValues } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -176,6 +177,10 @@ const DashboardPage = (props) => {
 
   const addChangeVolumeAwardSubmit = ({ min, max, minSR, maxSR, time }) => {
     dispatch(addChangeVolumeAward(min, max, minSR, maxSR, time, account.streamer));
+  };
+
+  const addRiotSubmit = ({ name, server }) => {
+    dispatch(addRiotAccount(name, server, account.streamer));
   };
 
   const connectSpotify = () => {
@@ -331,10 +336,23 @@ const DashboardPage = (props) => {
           </Form>
         </FlexBox>
         <h3>
-          Połącz się z kontem Riot Games, aby móc puszczać automatyczne reklamy po zakończonym
-          meczu.
+          Połącz się z kontem Riot Games, aby móc puszczać automatyczne reklamy po zakończonym meczu
+          oraz, aby móc korzystać z komend !matches i !match
         </h3>
-        <p>Prace w toku</p>
+        <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
+          <Input type="text" placeholder="nickname" {...registerRiot('name', { required: true })} />
+          {errors.name && <RequiredMessage>⚠ Required</RequiredMessage>}
+          <Select name="server" options={['EUW', 'EUNE', 'NA', 'KR']} />
+          <Button type="submit">Add account</Button>
+        </Form>
+        <div>
+          Lista kont:
+          {account.riotAccountList.forEach((riotAccount) => {
+            <p>
+              `{riotAccount.name} ({riotAccount.name})`
+            </p>;
+          })}
+        </div>
         <h3>
           Dodaj skandowanie w wybranych przez siebie momentach np. koniec meczu, subskrybcja w
           prezencie, raid.

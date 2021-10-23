@@ -9,6 +9,9 @@ import {
   CHANGE_VOLUME_REQUEST,
   CHANGE_VOLUME_SUCCESS,
   CHANGE_VOLUME_FAILURE,
+  ADD_RIOT_REQUEST,
+  ADD_RIOT_SUCCESS,
+  ADD_RIOT_FAILURE,
   DESTROY_SESSION,
 } from 'reducers';
 
@@ -59,6 +62,18 @@ export const addChangeVolumeAward = (min, max, minSR, maxSR, time, user) => asyn
     dispatch({ type: CHANGE_VOLUME_SUCCESS });
   } catch (error) {
     dispatch({ type: CHANGE_VOLUME_FAILURE, payload: error.message });
+  }
+};
+
+export const addRiotAccount = (name, server, user) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_RIOT_REQUEST });
+
+    await axios.put(`${url}riot`, { name, server, user });
+
+    dispatch({ type: ADD_RIOT_SUCCESS });
+  } catch (error) {
+    dispatch({ type: ADD_RIOT_FAILURE, payload: error.message });
   }
 };
 
