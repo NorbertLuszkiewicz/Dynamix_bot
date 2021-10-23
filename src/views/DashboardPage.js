@@ -348,26 +348,27 @@ const DashboardPage = (props) => {
         </h3>
         <FlexBox>
           <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
-            <Input
-              style={{ width: '400px' }}
-              type="text"
-              placeholder="nickname"
-              {...registerRiot('name', { required: true })}
-            />
-            <Select {...registerRiot('server')}>
-              <option value={'EUW1'}>EUW</option>
-              <option value={'EUN1'}>EUNE</option>
-              <option value={'NA1'}>NA</option>
-              <option value={'KR'}>KR</option>
-            </Select>
-
+            <GridBox>
+              <Input
+                style={{ width: '400px' }}
+                type="text"
+                placeholder="nickname"
+                {...registerRiot('name', { required: true })}
+              />
+              <Select {...registerRiot('server')}>
+                <option value={'EUW1'}>EUW</option>
+                <option value={'EUN1'}>EUNE</option>
+                <option value={'NA1'}>NA</option>
+                <option value={'KR'}>KR</option>
+              </Select>
+            </GridBox>
             <Button type="submit">Add account</Button>
           </Form>
           <div>
             <h3>Lista kont:</h3>
-            {account.riotAccountList.forEach((riotAccount) => (
+            {account.riotAccountList.map((riotAccount) => (
               <p>
-                {riotAccount.name} {'(' + riotAccount.name + ')'}
+                {riotAccount.name} {'(' + riotAccount.server + ')'}
               </p>
             ))}
           </div>
