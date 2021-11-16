@@ -16,12 +16,14 @@ const Wrapper = styled.main`
 `;
 
 const ItemList = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: ${({ theme }) => theme.lighter};
   border-radius: 30px;
   margin: 20px;
   padding: 20px;
+  justify-content: flex-start;
 
   & > h2 {
     margin-top: 30px;
@@ -36,6 +38,11 @@ const Item = styled.div`
 
   & > h4 {
     color: ${({ theme }) => theme.mainColor};
+  }
+
+  & > small {
+    padding-bottom: 10px;
+    color: #bba;
   }
 
   :hover {
@@ -125,6 +132,32 @@ const HomePage = () => {
             <CommandTitle>!next</CommandTitle>
             <p>Pomija piosneke na spotify/SR. Tylko dla moderatorów</p>
           </Item>
+          <h2>Komendy po połączeniu z Riot Games</h2>
+          <Item>
+            <CommandTitle>!ranking [server]</CommandTitle>
+            <p>Komenda zwraca top 10 serwera, bez podania server zwraca dla serwera EUW</p>
+          </Item>
+          <Item>
+            <CommandTitle>!mecze [nickname], [server]</CommandTitle>
+            <p>
+              Komenda zwraca ostatnie 10 gier z dzisiaj użytkownika, bez podania server wybiera EUW,
+              bez podania nickname zwraca nick streamera np. !mecze dynam1x, euw
+            </p>
+          </Item>
+          <Item>
+            <CommandTitle>!mecz [nr], [nickname], [server]</CommandTitle>
+            <p>
+              Komenda zwraca dokładny stan boardu użytkownika, bez podania server wybiera EUW, bez
+              podania nickname zwraca nick streamera np. !mecz dynam1x, euw
+            </p>
+          </Item>
+          <Item>
+            <CommandTitle>!staty [nickname], [server]</CommandTitle>
+            <p>
+              Komenda zwraca statystyki użytkownika, bez podania server wybiera EUW, bez podania
+              nickname zwraca nick streamera np. !staty dynam1x, euw
+            </p>
+          </Item>
         </ItemList>
         <ItemList>
           <h1>Możliwości bota</h1>
@@ -141,6 +174,10 @@ const HomePage = () => {
               Po połączeniu z Spotify I StreamElements dodatkowo pomija piosenki na Spotify
             </small>
           </Item>
+          <Item>
+            <p>Dodatkowe komendy związane z kontem riot i historią meczy tft</p>
+            <small>Po połączeniu Riot Games</small>
+          </Item>
           <h2>Dodatkowe Informacje</h2>
           <Item>
             <p>
@@ -150,9 +187,6 @@ const HomePage = () => {
           </Item>
           <Item>
             <p>Bot musi być moderatorem czatu aby działał poprawnie</p>
-          </Item>
-          <Item>
-            <p>Akutualnie prace trwają nad dodaniem integracji z Riot games</p>
           </Item>
         </ItemList>
       </Wrapper>

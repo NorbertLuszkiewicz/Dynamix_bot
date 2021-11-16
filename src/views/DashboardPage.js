@@ -344,8 +344,8 @@ const DashboardPage = (props) => {
           </Form>
         </FlexBox>
         <h3>
-          Połącz się z kontem Riot Games, aby móc puszczać automatyczne reklamy po zakończonym meczu
-          oraz, aby móc korzystać z komend !matches i !match
+          Połącz się z kontem Riot Games, aby mieć możliwość używania komend: !ranking, !staty,
+          !mecze, !mecz
         </h3>
         <FlexBox>
           <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
