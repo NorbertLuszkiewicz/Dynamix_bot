@@ -226,11 +226,7 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
   const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
-  const {
-    register: registerSlots,
-    handleSubmit: handleSubmitSlots,
-    getValues: getSlotsValues,
-  } = useForm();
+  const { register: registerSlots, handleSubmit: handleSubmitSlots } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -258,6 +254,7 @@ const DashboardPage = (props) => {
   const handleOnChange = (e) => {
     console.log(e);
     console.log(e.target);
+    setSlotsEmotes(5);
   };
 
   useEffect(() => {
