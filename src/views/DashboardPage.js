@@ -215,6 +215,7 @@ const DashboardPage = (props) => {
     account?.volumeSongID?.maxSR ? account.volumeSongID.maxSR : 60,
   );
   const [time, setTime] = useState(account?.volumeSongID?.time ? account.volumeSongID.time : 45);
+  const [slotsEmotes, setSlotsEmotes] = useState(7);
 
   const {
     register,
@@ -252,6 +253,11 @@ const DashboardPage = (props) => {
 
   const connectSpotify = () => {
     window.location.href = `https://dynamix-bot.glitch.me/spotify?user=${account.streamer}`;
+  };
+
+  const handleOnChange = (e) => {
+    console.log(e);
+    console.log(e.target);
   };
 
   useEffect(() => {
@@ -441,7 +447,7 @@ const DashboardPage = (props) => {
             formularz poniżej, kolejnie kup tę nagrodę na twitch, a jako tekst podaj [Award name],
             który podałeś w formularzu poniżej
           </p>
-          <Form onSubmit={handleSubmitSlots(addSlotsSubmit)}>
+          <Form onChange={handleOnChange} onSubmit={handleSubmitSlots(addSlotsSubmit)}>
             <StatusBox>
               <Input
                 style={{ width: '200px' }}
@@ -452,7 +458,7 @@ const DashboardPage = (props) => {
               <StatusBox>
                 <Input
                   style={{ width: '200px' }}
-                  type="text"
+                  type="number"
                   max={10}
                   min={1}
                   defaultValue={7}
@@ -462,7 +468,7 @@ const DashboardPage = (props) => {
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '15px' }}>
-                  {((1 / getSlotsValues('emotes') / getSlotsValues('emotes')) * 100).toFixed(2)}%
+                  {((1 / slotsEmotes / slotsEmotes) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
               <CheckBoxWrapper>
