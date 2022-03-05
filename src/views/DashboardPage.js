@@ -463,7 +463,7 @@ const DashboardPage = (props) => {
                   max={10}
                   min={1}
                   placeholder="Number of emotes"
-                  onChange={handleChangeSlotsData(getSlotsValues('emotes'))}
+                  onChange={() => handleChangeSlotsData(getSlotsValues('emotes'))}
                   value={slotsWinProcent}
                   {...registerSlots('emotes', { required: true })}
                 />
