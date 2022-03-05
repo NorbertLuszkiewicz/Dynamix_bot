@@ -348,7 +348,7 @@ const DashboardPage = (props) => {
                 min={0}
                 max={100}
                 defaultValue={min}
-                onChange={() => setMin(getValues('min'))}
+                onChangeText={() => setMin(getValues('min'))}
                 onMouseUp={(event) => setMin(event.target.value)}
                 {...registerAward('min')}
               />
