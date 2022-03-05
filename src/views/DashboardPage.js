@@ -398,27 +398,27 @@ const DashboardPage = (props) => {
           <Form onSubmit={handleSubmitSlots(addSlotsSubmit)}>
             <StatusBox>
               <Input
-                style={{ width: '400px' }}
+                style={{ width: '200px' }}
                 type="text"
                 placeholder="Award name"
                 {...registerSlots('name', { required: true })}
               />
-              <div>
-                {' '}
+              <StatusBox>
                 <Input
-                  style={{ width: '400px' }}
+                  style={{ width: '200px' }}
                   type="text"
-                  defaultValue={slotsWinProcent}
+                  value={slotsWinProcent}
                   placeholder="
                 number of emotes"
-                  onChange={() => setSlotsWinProcent(getValues('slotsWinProcent'))}
-                  onMouseUp={(event) =>
-                    setSlotsWinProcent((1 / event.target.value / event.target.value).toFixed(2))
+                  onChange={(event) =>
+                    setSlotsWinProcent(
+                      ((1 / event.target.value / event.target.value) * 100).toFixed(2),
+                    )
                   }
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage>{slotsWinProcent}%</RequiredMessage>
-              </div>
+              </StatusBox>
 
               <Toggle {...registerSlots('withBan')}></Toggle>
             </StatusBox>
@@ -430,7 +430,7 @@ const DashboardPage = (props) => {
               <p>
                 {`${slot.name}| 10min t/o za przegraną ${
                   slot.withBan ? 'włączone' : 'wyłączone'
-                } |ilość emotek ${slot.emotes} (${(1 / slot.emotes / slot.emotes).toFixed(
+                } |ilość emotek ${slot.emotes} (${((1 / slot.emotes / slot.emotes) * 100).toFixed(
                   2,
                 )}% na wina)| użyto nagrody: ${slot.times}, w tym wygrało: ${slot.wins}`}
               </p>
