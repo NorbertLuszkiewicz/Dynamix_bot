@@ -226,7 +226,11 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
   const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
-  const { register: registerSlots, handleSubmit: handleSubmitSlots } = useForm();
+  const {
+    register: registerSlots,
+    handleSubmit: handleSubmitSlots,
+    getValues: getSlotsValues,
+  } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -451,12 +455,13 @@ const DashboardPage = (props) => {
                   style={{ width: '200px' }}
                   type="number"
                   max={10}
+                  min={1}
                   defaultValue={slotsWinProcent}
                   placeholder="Number of emotes"
-                  onChange={(e) => setSlotsWinProcent(e.target.value)}
+                  onChange={(e) => setSlotsWinProcent(setMax(getSlotsValues('emotes')))}
                   {...registerSlots('emotes', { required: true })}
                 />
-                <RequiredMessage style={{ marginRight: '20px' }}>
+                <RequiredMessage style={{ marginRight: '15px' }}>
                   {((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
@@ -468,18 +473,20 @@ const DashboardPage = (props) => {
             </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
-          <div>
-            <h3>Lista nagród:</h3>
-            {account.slotsID.map((slot) => (
-              <p>
-                {`${slot.name}| 10min t/o za przegraną ${
-                  slot.withBan ? 'włączone' : 'wyłączone'
-                } |ilość emotek ${slot.emotes} (${((1 / slot.emotes / slot.emotes) * 100).toFixed(
-                  2,
-                )}% na wina)| użyto nagrody: ${slot.times}, w tym wygrało: ${slot.wins}`}
-              </p>
-            ))}
-          </div>
+          {account.slotsID && (
+            <div>
+              <h3>Lista nagród:</h3>
+              {account.slotsID.map((slot) => (
+                <p>
+                  {`${slot.name}| 10min t/o za przegraną ${
+                    slot.withBan ? 'włączone' : 'wyłączone'
+                  } |ilość emotek ${slot.emotes} (${((1 / slot.emotes / slot.emotes) * 100).toFixed(
+                    2,
+                  )}% na wina)| użyto nagrody: ${slot.times}, w tym wygrało: ${slot.wins}`}
+                </p>
+              ))}
+            </div>
+          )}
         </FlexBox>
       </Wrapper>
     </PageTemplate>
