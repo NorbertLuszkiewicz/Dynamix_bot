@@ -253,8 +253,8 @@ const DashboardPage = (props) => {
 
   const handleOnChange = (e) => {
     console.log(e);
-    console.log(e.target);
-    setSlotsEmotes(5);
+    console.log(e.target.emotes);
+    if (e.target.emotes && e.target.value) setSlotsEmotes(parseInt(e.target.value));
   };
 
   useEffect(() => {
