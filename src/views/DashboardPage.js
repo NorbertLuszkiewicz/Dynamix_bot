@@ -463,7 +463,7 @@ const DashboardPage = (props) => {
                   type="number"
                   max={10}
                   min={1}
-                  defaultValue={slotsValues}
+                  defaultValue={7}
                   placeholder="Number of emotes"
                   onChange={getSlotsValues}
                   {...registerSlots('emotes', { required: true })}
