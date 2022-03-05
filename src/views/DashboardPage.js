@@ -452,16 +452,17 @@ const DashboardPage = (props) => {
               <StatusBox>
                 <Input
                   style={{ width: '200px' }}
-                  type="number"
+                  type="text"
                   max={10}
                   min={1}
                   defaultValue={7}
                   placeholder="Number of emotes"
-                  onChange={(e)=> console.log(e, e.target)}
+                  onChange={(e) => console.log(e, e.target)}
+                  onChangeText={(e) => console.log(e, e.target)}
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '15px' }}>
-                  {((1 /values.emotes) / values.emotes) * 100).toFixed(2)}%
+                  {((1 / values.emotes / values.emotes) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
               <CheckBoxWrapper>
