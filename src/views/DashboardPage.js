@@ -407,7 +407,7 @@ const DashboardPage = (props) => {
                 <Input
                   style={{ width: '200px' }}
                   type="text"
-                  defaultValue={slotsWinProcent}
+                  defaultValue={7}
                   placeholder="
                 number of emotes"
                   onChange={(event) =>
