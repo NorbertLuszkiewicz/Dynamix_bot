@@ -215,7 +215,6 @@ const DashboardPage = (props) => {
     account?.volumeSongID?.maxSR ? account.volumeSongID.maxSR : 60,
   );
   const [time, setTime] = useState(account?.volumeSongID?.time ? account.volumeSongID.time : 45);
-  const [slotsWinProcent, setSlotsWinProcent] = useState(7);
 
   const {
     register,
@@ -253,13 +252,6 @@ const DashboardPage = (props) => {
 
   const connectSpotify = () => {
     window.location.href = `https://dynamix-bot.glitch.me/spotify?user=${account.streamer}`;
-  };
-
-  const handleChangeSlotsData = (e) => {
-    setSlotsWinProcent(e);
-    console.log(e);
-    console.log(((1 / e / e) * 100).toFixed(2));
-    console.log(((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2));
   };
 
   useEffect(() => {
