@@ -253,8 +253,12 @@ const DashboardPage = (props) => {
 
   const handleOnChange = (e) => {
     console.log(e);
-    console.log(e.target.emotes);
-    if (e.target.emotes && e.target.value) setSlotsEmotes(parseInt(e.target.value));
+    console.log(e.target, 'ssss');
+    console.log(e.target?.emotes, 'aaa');
+    if (e.target?.name === 'emotes' && e.target.value) {
+      console.log(e.target.value);
+      setSlotsEmotes(parseInt(e.target.value));
+    }
   };
 
   useEffect(() => {
@@ -460,8 +464,6 @@ const DashboardPage = (props) => {
                   min={1}
                   defaultValue={7}
                   placeholder="Number of emotes"
-                  onChange={(e) => console.log(e, e.target)}
-                  onChangeText={(e) => console.log(e, e.target)}
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '15px' }}>
