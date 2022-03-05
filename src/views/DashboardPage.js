@@ -12,7 +12,6 @@ import {
   addRiotAccount,
   addSlotsAward,
 } from '../actions';
-import Toggle from '../components/Toggle/Toggle';
 
 const Wrapper = styled.main`
   display: grid;
