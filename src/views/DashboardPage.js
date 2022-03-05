@@ -458,17 +458,19 @@ const DashboardPage = (props) => {
                   min={1}
                   defaultValue={slotsWinProcent}
                   placeholder="Number of emotes"
-                  onChange={(e) => setSlotsWinProcent(setMax(getSlotsValues('emotes')))}
+                  onChange={(e) => {
+                    setSlotsWinProcent(e.target.value), console.log(e.target);
+                  }}
                   {...registerSlots('emotes', { required: true })}
                 />
+                <p>{slotsWinProcent}</p>
                 <RequiredMessage style={{ marginRight: '15px' }}>
                   {((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
               <CheckBoxWrapper>
-                <CheckBoxLabel>
-                  <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
-                </CheckBoxLabel>
+                <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
+                <CheckBoxLabel htmlFor="checkbox" />
               </CheckBoxWrapper>
             </StatusBox>
             <Button type="submit">Add account</Button>
