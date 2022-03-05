@@ -226,7 +226,11 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
   const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
-  const { register: registerSlots, handleSubmit: handleSubmitSlots } = useForm();
+  const {
+    register: registerSlots,
+    handleSubmit: handleSubmitSlots,
+    getValues: getSlotsValues,
+  } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -252,9 +256,9 @@ const DashboardPage = (props) => {
   };
 
   const handleChangeSlotsData = (e) => {
-    setSlotsWinProcent(e.target.value);
-    console.log(e.target);
-    console.log(((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2));
+    setSlotsWinProcent(e);
+    console.log(e);
+    console.log(((1 / e / e) * 100).toFixed(2));
   };
 
   useEffect(() => {
@@ -459,7 +463,7 @@ const DashboardPage = (props) => {
                   max={10}
                   min={1}
                   placeholder="Number of emotes"
-                  onChange={handleChangeSlotsData}
+                  onChange={handleChangeSlotsData(getSlotsValues('emotes'))}
                   value={slotsWinProcent}
                   {...registerSlots('emotes', { required: true })}
                 />
