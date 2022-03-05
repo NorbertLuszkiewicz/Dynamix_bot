@@ -172,6 +172,7 @@ const DashboardPage = (props) => {
     account?.volumeSongID?.maxSR ? account.volumeSongID.maxSR : 60,
   );
   const [time, setTime] = useState(account?.volumeSongID?.time ? account.volumeSongID.time : 45);
+  const [slotsWinProcent, setSlotsWinProcent] = useState(2);
 
   const {
     register,
@@ -395,21 +396,32 @@ const DashboardPage = (props) => {
             który podałeś w formularzu poniżej
           </p>
           <Form onSubmit={handleSubmitSlots(addSlotsSubmit)}>
-            <GridBox>
+            <StatusBox>
               <Input
                 style={{ width: '400px' }}
                 type="text"
                 placeholder="Award name"
                 {...registerSlots('name', { required: true })}
               />
-              <Input
-                style={{ width: '400px' }}
-                type="text"
-                placeholder="nickname"
-                {...registerSlots('emotes', { required: true })}
-              />
+              <div>
+                {' '}
+                <Input
+                  style={{ width: '400px' }}
+                  type="text"
+                  defaultValue={slotsWinProcent}
+                  placeholder="
+                number of emotes"
+                  onChange={() => setSlotsWinProcent(getValues('slotsWinProcent'))}
+                  onMouseUp={(event) =>
+                    setSlotsWinProcent((1 / event.target.value / event.target.value).toFixed(2))
+                  }
+                  {...registerSlots('emotes', { required: true })}
+                />
+                <RequiredMessage>{slotsWinProcent}%</RequiredMessage>
+              </div>
+
               <Toggle {...registerSlots('withBan')}></Toggle>
-            </GridBox>
+            </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
           <div>
@@ -418,8 +430,8 @@ const DashboardPage = (props) => {
               <p>
                 {`${slot.name}| 10min t/o za przegraną ${
                   slot.withBan ? 'włączone' : 'wyłączone'
-                } |ilość emotek ${slot.emotes} (${Math.round(
-                  (slot.emotes * slot.emotes) / 100,
+                } |ilość emotek ${slot.emotes} (${(1 / slot.emotes / slot.emotes).toFixed(
+                  2,
                 )}% na wina)| użyto nagrody: ${slot.times}, w tym wygrało: ${slot.wins}`}
               </p>
             ))}
