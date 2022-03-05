@@ -461,7 +461,7 @@ const DashboardPage = (props) => {
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '15px' }}>
-                  {((1 / getSlotsValues / getSlotsValues) * 100).toFixed(2)}%
+                  {((1 / getSlotsValues('emotes') / getSlotsValues('emotes')) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
               <CheckBoxWrapper>
