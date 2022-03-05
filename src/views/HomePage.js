@@ -103,99 +103,124 @@ const HomePage = () => {
       {showError && <ErrorBox>{error} Coś poszło nie tak :/</ErrorBox>}
       <Wrapper onLoad={() => setShowError(error)}>
         <ItemList>
-          <h1>Lista komend</h1>
+          <h1>Lista komend domyślnych</h1>
           <Item>
             <CommandTitle>!dynamix</CommandTitle>
-            <p>Komenda sprawdzająca czy aktualnie bot działa. Powinno zwrócić "Bot Works!"</p>
+            <p>Komenda sprawdzająca, czy aktualnie bot działa. Powinno zwrócić "Bot Works!"</p>
+          </Item>
+          <Item>
+            <p>Bot musi być moderatorem czatu, aby działał poprawnie</p>
+          </Item>
+          <Item>
+            <CommandTitle>!slots</CommandTitle>
+            <p>Zwraca losowanie 3 emotek, szansa na wygranie 2%, cooldown 3 min na osobę</p>
+          </Item>
+          <Item>
+            <CommandTitle>!pogoda [miasto]</CommandTitle>
+            <p>Zwraca dane dotyczące temperatury, zachmurzenia oraz prędkości wiatru</p>
           </Item>
           <Item>
             <CommandTitle>piramidka [emote]</CommandTitle>
             <p>Tworzy piramidkę 4 stopnia z podanej emotki</p>
           </Item>
-          <h2>Komendy po połączeniu z Spotify i StreamElements</h2>
+          <Item>
+            <p>
+              Ustawienie Nagrody kanału, która automatyczne wykona !slots, można ustawić, że za
+              przegraną osoba dostanie t/o
+            </p>
+          </Item>
+        </ItemList>
+        <ItemList>
+          <h1>Integracja z Spotify i StreamElements</h1>
           <Item>
             <CommandTitle>!song</CommandTitle>
             <p>
-              Komenda zwraca nazwe, autora oraz link do piosenki, w zależności co aktualnie leci czy
-              spotify czy SR zwrócu prawidłowy utwór
+              Komenda zwraca nazwę, autora oraz link do piosenki ( zwróci utwór z Spotify albo
+              Stream Elements w zależności, z której strony otwarzany jest w tym momencie utwór)
             </p>
           </Item>
           <Item>
             <CommandTitle>!playlist/!playlista</CommandTitle>
-            <p>Wyświetla playliste spotify na której aktualnie jest streamer</p>
+            <p>Wyświetla playlistę spotify, na której aktualnie jest streamer</p>
           </Item>
           <Item>
             <CommandTitle>volume [0-100]</CommandTitle>
-            <p>Zmienia głosność na spotify. Tylko dla moderatorów</p>
+            <p>Zmienia głośność na spotify. Tylko dla moderatorów</p>
           </Item>
           <Item>
             <CommandTitle>!next</CommandTitle>
-            <p>Pomija piosneke na spotify/SR. Tylko dla moderatorów</p>
+            <p>Pomija piosenkę na spotify/SR. Tylko dla moderatorów</p>
           </Item>
-          <h2>Komendy po połączeniu z Riot Games</h2>
+          <Item>
+            <p>
+              Ustawienie Nagrody kanału, która automatyczne dodaje piosenkę za pkt kanału do kolejki
+              StreamElements (zatrzymuje Spotify przy zakupieniu nagrody i wraca do piosenki po
+              zakończeniu listy SR)
+            </p>
+          </Item>
+          <Item>
+            <p>
+              Ustawienie Nagrody kanału, która automatyczne pomija piosenkę z SR/Spotify przy kupnie
+              nagrody
+            </p>
+          </Item>
+          <Item>
+            <p>
+              Ustawienie Nagrody kanału, która automatyczne podgłaśnia Spotify i SR do wybranej
+              głosności na wybrany czas
+            </p>
+          </Item>
+        </ItemList>
+        <ItemList>
+          <h1>Komendy po połączeniu z Riot Games</h1>
           <Item>
             <CommandTitle>!ranking [server]</CommandTitle>
-            <p>Komenda zwraca top 10 serwera, bez podania server zwraca dla serwera EUW</p>
+            <p>Komenda zwraca top 10 serwera tft, bez podania [server] zwraca dla serwera EUW</p>
           </Item>
           <Item>
             <CommandTitle>!mecze [nickname], [server]</CommandTitle>
             <p>
-              Komenda zwraca ostatnie 10 gier z dzisiaj użytkownika, bez podania server wybiera EUW,
-              bez podania nickname zwraca nick streamera np. !mecze dynam1x, euw
+              Komenda zwraca ostatnie 10 gier tft z dzisiaj użytkownika, bez podania [server]
+              wybiera EUW, bez podania [nickname] zwraca nick streamera np. !mecze dynam1x, euw
             </p>
           </Item>
           <Item>
             <CommandTitle>!mecz [nr], [nickname], [server]</CommandTitle>
             <p>
-              Komenda zwraca dokładny stan boardu użytkownika, bez podania server wybiera EUW, bez
-              podania nickname zwraca nick streamera np. !mecz dynam1x, euw
+              Komenda zwraca dokładny stan boardu użytkownika, bez podania [server] wybiera EUW, bez
+              podania [nickname] zwraca nick streamera np. !mecz 1 dynam1x, euw
             </p>
           </Item>
           <Item>
             <CommandTitle>!staty [nickname], [server]</CommandTitle>
             <p>
-              Komenda zwraca statystyki użytkownika, bez podania server wybiera EUW, bez podania
-              nickname zwraca nick streamera np. !staty dynam1x, euw
+              Komenda zwraca statystyki użytkownika w tft, bez podania [server] wybiera EUW, bez
+              podania [nickname] zwraca nick streamera np. !staty dynam1x, euw
             </p>
           </Item>
         </ItemList>
         <ItemList>
-          <h1>Możliwości bota</h1>
+          <h1>Dodatkowe Informacje</h1>
           <Item>
-            <p>Automatyczne dodaje piosenkę za pkt kanału do kolejki StreamElements</p>
-            <small>
-              Po połączeniu z Spotify I StreamElements dodatkowo zatrzymuje Spotify przy zakupieniu
-              nagrody i wraca do piosenki po zakończeniu listy SR
-            </small>
+            <p>Bot musi być moderatorem czatu, aby działał poprawnie</p>
           </Item>
-          <Item>
-            <p>Automatyczne pomija piosenkę z SR przy wukupieniu nagrody za pkt kanału </p>
-            <small>
-              Po połączeniu z Spotify I StreamElements dodatkowo pomija piosenki na Spotify
-            </small>
-          </Item>
-          <Item>
-            <p>Dodatkowe komendy związane z kontem riot i historią meczy tft</p>
-            <small>Po połączeniu Riot Games</small>
-          </Item>
-          <h2>Dodatkowe Informacje</h2>
           <Item>
             <p>
-              Aby bot działał z nagrodami za punkty, nagrody te muszą być z możliwością wpisania
-              tekstu
+              Aby bot działał poprawnie z nagrodami za punkty kanału, nagrody te muszą mieć
+              możliwość wpisania tekstu
             </p>
           </Item>
           <Item>
-            <p>Bot musi być moderatorem czatu aby działał poprawnie</p>
+            <p>Więcej informacji możesz znależć w zakładce opcje po zalogowaniu.</p>
           </Item>
         </ItemList>
       </Wrapper>
       <Footer>
         <h3>
-          W sprawie kolejnych pomysłów co można dodać do bota, proszę pisać do DynaM1X1 na twitch
-          albo Dynamix #1054 na Discord
+          W sprawie pomysłów co można dodać lub usprawnić, proszę pisać do DynaM1X1 na twitch albo
+          Dynamix #1054 na Discord
         </h3>
-        <p>Dynamix-bot wersja: Beta 0.4.1</p>
+        <p>Dynamix-bot wersja: Beta 0.5.0</p>
       </Footer>
     </PageTemplate>
   );

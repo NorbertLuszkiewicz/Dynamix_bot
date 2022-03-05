@@ -206,19 +206,20 @@ const DashboardPage = (props) => {
           <Status isActive={account.twitchAccessToken}>Twitch</Status>
           <Status isActive={account.spotifyRefreshToken}>Spotify</Status>
           <Status isActive={account.clientSongRequestSecret}>Stream Elements</Status>
-          <Status isActive={null}>Riot Games</Status>
+          <Status isActive={account.riotAccountList?.length > 0}>Riot Games</Status>
         </StatusBox>
         <h3>Połącz się ze Spotify i Stream Elements, aby mieć kontrole nad przepływem piosenek.</h3>
         <p>
-          Korzyści jakie daję połącze bora z kontami Spotify i Stream Elements są wypisane w
+          Korzyści jakie daję połączenie bota z kontami Spotify i Stream Elements są wypisane w
           zakładce Home.
         </p>
         <GridBox>
           <FlexBox>
-            <p>Połącz się z Spotify klikając przycisk poniżej</p>
+            <p>Połącz się z Spotify, klikając przycisk poniżej</p>
             <p>
-              Ważne na pv na discord {'(Dynamix #1054)'} wyślij mi email na którym jest spotify aby
-              sprawdzić kliknij w prawym górnym rogu na swój nick {'->'} konto
+              <strong>Ważne</strong> na pv na discord {'(Dynamix #1054)'} wyślij mi email, na którym
+              jest spotify aby sprawdzić kliknij na spotify w prawym górnym rogu na swój nick {'->'}{' '}
+              konto {'->'} email
             </p>
             <Button isSpotify={true} onClick={connectSpotify}>
               <Icon src={spotifyLogo} alt="logo Spotify" /> Spotify
@@ -259,21 +260,21 @@ const DashboardPage = (props) => {
         <GridBox>
           <FlexBox>
             <h3>
-              Aby Aktywować automatyczne dodawanie piosenek do SR za nagrodę kanału kup ją, a jako
-              tekst podaj "add-song-award".
+              Aby Aktywować automatyczne dodawanie piosenek do SR za nagrodę kanału, po stworzeniu
+              jej na twitch kup ją, a jako tekst podaj "add-song-award".
             </h3>
           </FlexBox>
           <FlexBox>
             <h3>
-              Aby Aktywować automatyczne pomijanie piosenek za nagrode kanału kup ją, a jako tekst
-              podaj "skip-song-award".
+              Aby Aktywować automatyczne pomijanie piosenek za nagrodę kanału, po stworzeniu jej na
+              twitch kup ją, a jako tekst podaj "skip-song-award".
             </h3>
           </FlexBox>
         </GridBox>
         <FlexBox>
           <h3>
-            Aby Aktywować automatyczną zmiane głosności przy zakupie nagrody kanału. Ustaw poniżej
-            odpowiednie wartości na nastpępnie kup tą nagrode na swoim kanale a jako tekst podaj
+            Aby Aktywować automatyczną zmianę głośności przy zakupie nagrody kanału. Ustaw poniżej
+            odpowiednie wartości a następnie kup tę nagrodę na swoim kanale, a jako tekst podaj
             <br />
             "change-volume-song-award".
           </h3>
@@ -374,11 +375,34 @@ const DashboardPage = (props) => {
             ))}
           </div>
         </FlexBox>
-        <h3>
-          Dodaj skandowanie w wybranych przez siebie momentach np. koniec meczu, subskrybcja w
-          prezencie, raid.
-        </h3>
-        <p>Możliwe do wprowadzenia dopiero jak opcja /chant na twitch będzie ogólnodostępna. </p>
+
+        <FlexBox>
+          <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
+            <GridBox>
+              <Input
+                style={{ width: '400px' }}
+                type="text"
+                placeholder="nickname"
+                {...registerRiot('name', { required: true })}
+              />
+              <Select {...registerRiot('server')}>
+                <option value={'EUW1'}>EUW</option>
+                <option value={'EUN1'}>EUNE</option>
+                <option value={'NA1'}>NA</option>
+                <option value={'KR'}>KR</option>
+              </Select>
+            </GridBox>
+            <Button type="submit">Add account</Button>
+          </Form>
+          <div>
+            <h3>Lista kont:</h3>
+            {account.riotAccountList.map((riotAccount) => (
+              <p>
+                {riotAccount.name} {'(' + riotAccount.server + ')'}
+              </p>
+            ))}
+          </div>
+        </FlexBox>
       </Wrapper>
     </PageTemplate>
   ) : (
