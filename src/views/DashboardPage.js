@@ -408,6 +408,7 @@ const DashboardPage = (props) => {
                 <Input
                   style={{ width: '400px' }}
                   type="text"
+                  defaultValue={slotsWinProcent}
                   placeholder="
                 number of emotes"
                   onChange={() => setSlotsWinProcent(getValues('slotsWinProcent'))}
@@ -416,7 +417,7 @@ const DashboardPage = (props) => {
                   }
                   {...registerSlots('emotes', { required: true })}
                 />
-                {<RequiredMessage>{max}%</RequiredMessage>}
+                <RequiredMessage>{slotsWinProcent}%</RequiredMessage>
               </div>
 
               <Toggle {...registerSlots('withBan')}></Toggle>
