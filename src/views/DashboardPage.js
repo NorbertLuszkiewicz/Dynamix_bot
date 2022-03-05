@@ -226,11 +226,7 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
   const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
-  const {
-    register: registerSlots,
-    handleSubmit: handleSubmitSlots,
-    getValues: getSlotsValues,
-  } = useForm();
+  const { register: registerSlots, handleSubmit: handleSubmitSlots } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -253,6 +249,12 @@ const DashboardPage = (props) => {
 
   const connectSpotify = () => {
     window.location.href = `https://dynamix-bot.glitch.me/spotify?user=${account.streamer}`;
+  };
+
+  const handleChangeSlotsData = (e) => {
+    setSlotsWinProcent(e.target.value);
+    console.log(e.target);
+    console.log(((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2));
   };
 
   useEffect(() => {
@@ -456,11 +458,9 @@ const DashboardPage = (props) => {
                   type="number"
                   max={10}
                   min={1}
-                  defaultValue={slotsWinProcent}
                   placeholder="Number of emotes"
-                  onChange={(e) => {
-                    setSlotsWinProcent(e.target.value), console.log(e.target);
-                  }}
+                  onChange={handleChangeSlotsData}
+                  value={slotsWinProcent}
                   {...registerSlots('emotes', { required: true })}
                 />
                 <p>{slotsWinProcent}</p>
