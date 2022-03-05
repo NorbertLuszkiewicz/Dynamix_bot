@@ -454,9 +454,10 @@ const DashboardPage = (props) => {
                 <Input
                   style={{ width: '200px' }}
                   type="number"
+                  max={10}
                   defaultValue={slotsWinProcent}
-                  placeholder="number of emotes"
-                  onChange={(e) => setSlotsWinProcent(getValuesSlots('emotes'))}
+                  placeholder="Number of emotes"
+                  onChange={(e) => setSlotsWinProcent(e.target.value)}
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '20px' }}>
