@@ -407,7 +407,7 @@ const DashboardPage = (props) => {
                 <Input
                   style={{ width: '200px' }}
                   type="text"
-                  value={slotsWinProcent}
+                  defaultValue={slotsWinProcent}
                   placeholder="
                 number of emotes"
                   onChange={(event) =>
@@ -420,7 +420,7 @@ const DashboardPage = (props) => {
                 <RequiredMessage>{slotsWinProcent}%</RequiredMessage>
               </StatusBox>
 
-              <Toggle {...registerSlots('withBan')}></Toggle>
+              <Toggle style={{ marginLeft: '20px' }} {...registerSlots('withBan')}></Toggle>
             </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
