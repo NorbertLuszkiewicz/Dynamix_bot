@@ -6,7 +6,13 @@ import PageTemplate from 'templates/PageTemplates';
 import { Redirect } from 'react-router';
 import { getAccount } from 'actions';
 import spotifyLogo from 'assets/spotify.svg';
-import { connectStreamElements, addChangeVolumeAward, addRiotAccount } from '../actions';
+import {
+  connectStreamElements,
+  addChangeVolumeAward,
+  addRiotAccount,
+  addSlotsAward,
+} from '../actions';
+import Toggle from '../components/Toggle/Toggle';
 
 const Wrapper = styled.main`
   display: grid;
@@ -176,6 +182,7 @@ const DashboardPage = (props) => {
 
   const { register: registerAward, handleSubmit: handleSubmitAward, getValues } = useForm();
   const { register: registerRiot, handleSubmit: handleSubmitRiot } = useForm();
+  const { register: registerSlots, handleSubmit: handleSubmitSlots } = useForm();
 
   const connectStreamElementsSubmit = ({ clientID, token }) => {
     dispatch(connectStreamElements(clientID, token, account.streamer));
@@ -188,6 +195,11 @@ const DashboardPage = (props) => {
 
   const addRiotSubmit = ({ name, server }) => {
     dispatch(addRiotAccount(name, server, account.streamer));
+    dispatch(getAccount(name, token));
+  };
+
+  const addSlotsSubmit = ({ name, emotes, withBan }) => {
+    dispatch(addSlotsAward(name, emotes, withBan, account.streamer));
     dispatch(getAccount(name, token));
   };
 
@@ -377,28 +389,38 @@ const DashboardPage = (props) => {
         </FlexBox>
 
         <FlexBox>
-          <Form onSubmit={handleSubmitRiot(addRiotSubmit)}>
+          <p>
+            Aby Aktywować nagrodę z Slots, stwórz ją na twitch, następnie wypełnij i wyślij
+            formularz poniżej, kolejnie kup tę nagrodę na twitch, a jako tekst podaj [Award name],
+            który podałeś w formularzu poniżej
+          </p>
+          <Form onSubmit={handleSubmitSlots(addSlotsSubmit)}>
             <GridBox>
               <Input
                 style={{ width: '400px' }}
                 type="text"
-                placeholder="nickname"
-                {...registerRiot('name', { required: true })}
+                placeholder="Award name"
+                {...registerSlots('name', { required: true })}
               />
-              <Select {...registerRiot('server')}>
-                <option value={'EUW1'}>EUW</option>
-                <option value={'EUN1'}>EUNE</option>
-                <option value={'NA1'}>NA</option>
-                <option value={'KR'}>KR</option>
-              </Select>
+              <Input
+                style={{ width: '400px' }}
+                type="text"
+                placeholder="nickname"
+                {...registerSlots('emotes', { required: true })}
+              />
+              <Toggle {...registerSlots('withBan')}></Toggle>
             </GridBox>
             <Button type="submit">Add account</Button>
           </Form>
           <div>
-            <h3>Lista kont:</h3>
-            {account.riotAccountList.map((riotAccount) => (
+            <h3>Lista nagród:</h3>
+            {account.slotsID.map((slot) => (
               <p>
-                {riotAccount.name} {'(' + riotAccount.server + ')'}
+                {`${slot.name}| 10min t/o za przegraną ${
+                  slot.withBan ? 'włączone' : 'wyłączone'
+                } |ilość emotek ${slot.emotes} (${Math.round(
+                  (slot.emotes * slot.emotes) / 100,
+                )}% na wina)| użyto nagrody: ${slot.times}, w tym wygrało: ${slot.wins}`}
               </p>
             ))}
           </div>

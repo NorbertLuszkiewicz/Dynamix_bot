@@ -12,6 +12,9 @@ import {
   ADD_RIOT_REQUEST,
   ADD_RIOT_SUCCESS,
   ADD_RIOT_FAILURE,
+  ADD_SLOTS_REQUEST,
+  ADD_SLOTS_SUCCESS,
+  ADD_SLOTS_FAILURE,
   DESTROY_SESSION,
 } from 'reducers';
 
@@ -74,6 +77,18 @@ export const addRiotAccount = (name, server, user) => async (dispatch) => {
     dispatch({ type: ADD_RIOT_SUCCESS });
   } catch (error) {
     dispatch({ type: ADD_RIOT_FAILURE, payload: error.message });
+  }
+};
+
+export const addSlotsAward = (name, emotes, withBan, user) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_SLOTS_REQUEST });
+
+    await axios.put(`${url}slots`, { name, emotes, withBan, user });
+
+    dispatch({ type: ADD_SLOTS_SUCCESS });
+  } catch (error) {
+    dispatch({ type: ADD_SLOTS_FAILURE, payload: error.message });
   }
 };
 

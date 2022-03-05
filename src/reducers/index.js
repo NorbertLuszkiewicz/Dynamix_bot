@@ -10,6 +10,9 @@ export const CHANGE_VOLUME_FAILURE = 'CHANGE_VOLUME_FAILURE';
 export const ADD_RIOT_REQUEST = 'ADD_RIOT_REQUEST';
 export const ADD_RIOT_SUCCESS = 'ADD_RIOT_SUCCESS';
 export const ADD_RIOT_FAILURE = 'ADD_RIOT_FAILURE';
+export const ADD_SLOTS_REQUEST = 'ADD_SLOTS_REQUEST';
+export const ADD_SLOTS_SUCCESS = 'ADD_SLOTS_SUCCESS';
+export const ADD_SLOTS_FAILURE = 'ADD_SLOTS_FAILURE';
 export const DESTROY_SESSION = 'DESTROY_SESSION';
 
 export function userReducer(state = { account: null }, action) {
@@ -17,7 +20,6 @@ export function userReducer(state = { account: null }, action) {
     case GET_ACCOUNT_REQUEST:
       return { loading: true };
     case GET_ACCOUNT_SUCCESS:
-      console.log(action.payload);
       return { loading: false, account: action.payload };
     case GET_ACCOUNT_FAILURE:
       return { loading: false, error: action.payload };
