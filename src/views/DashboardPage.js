@@ -172,7 +172,7 @@ const DashboardPage = (props) => {
     account?.volumeSongID?.maxSR ? account.volumeSongID.maxSR : 60,
   );
   const [time, setTime] = useState(account?.volumeSongID?.time ? account.volumeSongID.time : 45);
-  const [slotsWinProcent, setSlotsWinProcent] = useState(2);
+  const [slotsWinProcent, setSlotsWinProcent] = useState(7);
 
   const {
     register,
@@ -406,21 +406,19 @@ const DashboardPage = (props) => {
               <StatusBox>
                 <Input
                   style={{ width: '200px' }}
-                  type="text"
-                  defaultValue={7}
+                  type="number"
+                  value={slotsWinProcent}
                   placeholder="
                 number of emotes"
-                  onChange={(event) =>
-                    setSlotsWinProcent(
-                      ((1 / event.target.value / event.target.value) * 100).toFixed(2),
-                    )
-                  }
+                  onChange={(e) => setSlotsWinProcent(e.target.value)}
                   {...registerSlots('emotes', { required: true })}
                 />
-                <RequiredMessage>{slotsWinProcent}%</RequiredMessage>
+                <RequiredMessage style={{ marginRight: '20px' }}>
+                  {((1 / slotsWinProcent / slotsWinProcent) * 100).toFixed(2)}%
+                </RequiredMessage>
               </StatusBox>
 
-              <Toggle style={{ marginLeft: '20px' }} {...registerSlots('withBan')}></Toggle>
+              <Toggle {...registerSlots('withBan')}></Toggle>
             </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
