@@ -449,11 +449,11 @@ const DashboardPage = (props) => {
             który podałeś w formularzu poniżej
           </p>
           <Form
-            style={{ maxWidth: '800px', marginBottom: '0', width: 'auto' }}
+            style={{ maxWidth: '800px', width: 'auto' }}
             onChange={handleOnChange}
             onSubmit={handleSubmitSlots(addSlotsSubmit)}
           >
-            <StatusBox>
+            <StatusBox style={{ marginBottom: '0' }}>
               <Input
                 style={{ width: '200px' }}
                 type="text"
