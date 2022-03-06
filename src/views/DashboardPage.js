@@ -487,14 +487,14 @@ const DashboardPage = (props) => {
               <h3>Lista nagród slots:</h3>
               {account.slotsID.map((slot) => (
                 <p>
-                  {`NAZWA: ${slot.name} | T/O ZA PRZEGRANĄ ${
+                  {`nazwa: ${slot.name} | t/o za przegraną ${
                     slot.withBan ? 'włączone' : 'wyłączone'
-                  } | ILOŚĆ EMOTEK ${slot.emotes} (${(
+                  } | ilość emotek: ${slot.emotes} (${(
                     (1 / slot.emotes / slot.emotes) *
                     100
-                  ).toFixed(2)}% na wina)| UŻYTO NAGRODY: ${slot.times} | WYGRAŁO: ${
+                  ).toFixed(2)}% na wina)| użyto: ${slot.times} | wygrało: ${
                     slot.wins
-                  } | AKTYWOWANE: ${slot.id ? 'tak' : 'nie'}`}
+                  } | aktywne: ${slot.id ? 'tak' : 'nie'}`}
                 </p>
               ))}
             </div>
