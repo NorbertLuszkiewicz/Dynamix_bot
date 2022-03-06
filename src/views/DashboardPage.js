@@ -492,7 +492,7 @@ const DashboardPage = (props) => {
                   } | ilość emotek: ${slot.emotes} (${(
                     (1 / slot.emotes / slot.emotes) *
                     100
-                  ).toFixed(2)}% na wina)| użyto: ${slot.times} | wygrało: ${
+                  ).toFixed(2)}% na wina) | użyto: ${slot.times} | wygrało: ${
                     slot.wins
                   } | aktywne: ${slot.id ? 'tak' : 'nie'}`}
                 </p>

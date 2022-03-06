@@ -200,6 +200,17 @@ const HomePage = () => {
           </Item>
         </ItemList>
         <ItemList>
+          <h1>Komendy z Chess.com</h1>
+          <Item>
+            <CommandTitle>!chessuser [nickname]/ !szachista [nickname] </CommandTitle>
+            <p>Komenda zwraca statystyki użytkownika na chess.com</p>
+          </Item>
+          <Item>
+            <CommandTitle>!chesslast [nickname]</CommandTitle>
+            <p>Komenda zwraca link do ostatniej gry na chess.com</p>
+          </Item>
+        </ItemList>
+        <ItemList>
           <h1>Dodatkowe Informacje</h1>
           <Item>
             <p>Bot musi być moderatorem czatu, aby działał poprawnie</p>
