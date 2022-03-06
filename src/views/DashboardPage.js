@@ -124,7 +124,7 @@ const Input = styled.input`
 const Form = styled.form`
   max-width: 600px;
   width: 100%;
-  min-width: 280px;
+  min-width: 250px;
   display: grid;
   margin: auto;
 `;
@@ -449,7 +449,7 @@ const DashboardPage = (props) => {
             który podałeś w formularzu poniżej
           </p>
           <Form
-            style={{ maxWidth: 'auto', display: 'auto', width: 'auto' }}
+            style={{ maxWidth: '800px', display: 'auto', width: 'auto' }}
             onChange={handleOnChange}
             onSubmit={handleSubmitSlots(addSlotsSubmit)}
           >
@@ -478,7 +478,7 @@ const DashboardPage = (props) => {
                 <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
                 <CheckBoxLabel htmlFor="checkbox" />
               </CheckBoxWrapper>
-              <p>{'<-'} 10min t/o jeżeli przegra, nic jeżeli będzie 2/3 emotek</p>
+              <p>{'<-'} 10min t/o przy przegranej, nic przy 2/3 emotek</p>
             </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
