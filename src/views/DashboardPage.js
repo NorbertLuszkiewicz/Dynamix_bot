@@ -480,7 +480,7 @@ const DashboardPage = (props) => {
               </CheckBoxWrapper>
               <p>{'<-'} 10min t/o przy przegranej, nic przy 2/3 emotek</p>
             </StatusBox>
-            <Button type="submit">Add account</Button>
+            <Button type="submit">Add slots award</Button>
           </Form>
           {account.slotsID && (
             <div>
