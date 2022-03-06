@@ -441,14 +441,18 @@ const DashboardPage = (props) => {
             ))}
           </div>
         </FlexBox>
-
+        <h3>Dodaj nagrody z szansą na wygraną</h3>
         <FlexBox>
           <p>
             Aby Aktywować nagrodę z Slots, stwórz ją na twitch, następnie wypełnij i wyślij
             formularz poniżej, kolejnie kup tę nagrodę na twitch, a jako tekst podaj [Award name],
             który podałeś w formularzu poniżej
           </p>
-          <Form onChange={handleOnChange} onSubmit={handleSubmitSlots(addSlotsSubmit)}>
+          <Form
+            style={{ maxWidth: 'auto', display: 'auto', width: 'auto' }}
+            onChange={handleOnChange}
+            onSubmit={handleSubmitSlots(addSlotsSubmit)}
+          >
             <StatusBox>
               <Input
                 style={{ width: '200px' }}
@@ -467,19 +471,20 @@ const DashboardPage = (props) => {
                   {...registerSlots('emotes', { required: true })}
                 />
                 <RequiredMessage style={{ marginRight: '15px' }}>
-                  {((1 / slotsEmotes / slotsEmotes) * 100).toFixed(2)}%
+                  win: {((1 / slotsEmotes / slotsEmotes) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
               <CheckBoxWrapper>
                 <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
                 <CheckBoxLabel htmlFor="checkbox" />
               </CheckBoxWrapper>
+              <p>{'<-'} 10min t/o jeżeli przegra, nic jeżeli będzie 2/3 emotek</p>
             </StatusBox>
             <Button type="submit">Add account</Button>
           </Form>
           {account.slotsID && (
             <div>
-              <h3>Lista nagród:</h3>
+              <h3>Lista nagród slots:</h3>
               {account.slotsID.map((slot) => (
                 <p>
                   {`${slot.name}| 10min t/o za przegraną ${
