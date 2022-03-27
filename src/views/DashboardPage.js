@@ -12,6 +12,7 @@ import {
   addRiotAccount,
   addSlotsAward,
 } from '../actions';
+import SwitchCommand from '../components/SwitchCommand/SwitchCommand';
 
 const Wrapper = styled.main`
   display: grid;
@@ -274,6 +275,8 @@ const DashboardPage = (props) => {
           <Status isActive={account.clientSongRequestSecret}>Stream Elements</Status>
           <Status isActive={account.riotAccountList?.length > 0}>Riot Games</Status>
         </StatusBox>
+        <h3>Włącz/wyłącz grupe komend na swoim kanale</h3>
+        <SwitchCommand account={account} />
         <h3>Połącz się ze Spotify i Stream Elements, aby mieć kontrole nad przepływem piosenek.</h3>
         <p>
           Korzyści jakie daję połączenie bota z kontami Spotify i Stream Elements są wypisane w
