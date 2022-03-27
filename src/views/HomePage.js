@@ -116,8 +116,22 @@ const HomePage = () => {
             <p>Zwraca losowanie 3 emotek, szansa na wygranie 2%, cooldown 3 min na osobę</p>
           </Item>
           <Item>
-            <CommandTitle>!pogoda [miasto]</CommandTitle>
+            <CommandTitle>!pogoda [city]</CommandTitle>
             <p>Zwraca dane dotyczące temperatury, zachmurzenia oraz prędkości wiatru</p>
+          </Item>
+          <Item>
+            <CommandTitle>!wordle [word]</CommandTitle>
+            <p>
+              Gra polegająca na odgadnięciu 5 literowego słowa (użycie '!wordle' zdradza więcej
+              szczegółów)
+            </p>
+          </Item>
+          <Item>
+            <CommandTitle>!on [command]/ !off [command]</CommandTitle>
+            <p>
+              Wyłącza/włącza daną komendę/grupę komend na kanale (tft, chess, pogoda, wordle, slots,
+              song)
+            </p>
           </Item>
           <Item>
             <CommandTitle>piramidka [emote]</CommandTitle>

@@ -15,6 +15,9 @@ import {
   ADD_SLOTS_REQUEST,
   ADD_SLOTS_SUCCESS,
   ADD_SLOTS_FAILURE,
+  CHANGE_COMMAND_SWITCH_REQUEST,
+  CHANGE_COMMAND_SWITCH_SUCCESS,
+  CHANGE_COMMAND_SWITCH_FAILURE,
   DESTROY_SESSION,
 } from 'reducers';
 
@@ -89,6 +92,18 @@ export const addSlotsAward = (name, emotes, withBan, user) => async (dispatch) =
     dispatch({ type: ADD_SLOTS_SUCCESS });
   } catch (error) {
     dispatch({ type: ADD_SLOTS_FAILURE, payload: error.message });
+  }
+};
+
+export const changeCommandSwitch = (user, body) => async (dispatch) => {
+  try {
+    dispatch({ type: CHANGE_COMMAND_SWITCH_REQUEST });
+
+    await axios.put(`${url}command_switch`, { user, body });
+
+    dispatch({ type: CHANGE_COMMAND_SWITCH_SUCCESS });
+  } catch (error) {
+    dispatch({ type: CHANGE_COMMAND_SWITCH_FAILURE, payload: error.message });
   }
 };
 
