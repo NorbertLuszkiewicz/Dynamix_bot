@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { changeCommandSwitch } from '../../actions';
 import Toggle from '../Toggle/Toggle';
+import ReactTooltip from 'react-tooltip';
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,28 +44,41 @@ const SwitchCommand = ({ account }) => {
     <Wrapper>
       <OptionWrapper>
         <Toggle id="weather" checked={weather} onClick={() => setWeather(!weather)} />
-        <StyledP>Pogoda</StyledP>
+        <StyledP data-place="bottom" data-tip="komendy: !pogoda, !horoskop">
+          Pogoda
+        </StyledP>
       </OptionWrapper>
       <OptionWrapper>
         <Toggle id="tft" checked={tft} onClick={() => setTft(!tft)} />
-        <StyledP>TFT</StyledP>
+        <StyledP data-place="bottom" data-tip="komendy: !mecze, !mecz, !staty, !ranking">
+          TFT
+        </StyledP>
       </OptionWrapper>
       <OptionWrapper>
         <Toggle id="chess" checked={chess} onClick={() => setChess(!chess)} />
-        <StyledP>Szachy</StyledP>
+        <StyledP data-place="bottom" data-tip="komendy: !chessuser, !chesslast">
+          Szachy
+        </StyledP>
       </OptionWrapper>
       <OptionWrapper>
         <Toggle id="wordle" checked={wordle} onClick={() => setWordle(!wordle)} />
-        <StyledP>Wordle</StyledP>
+        <StyledP data-place="bottom" data-tip="komenda: !wordle">
+          Wordle
+        </StyledP>
       </OptionWrapper>
       <OptionWrapper>
         <Toggle id="slots" checked={slots} onClick={() => setSlots(!slots)} />
-        <StyledP>Slots</StyledP>
+        <StyledP data-place="bottom" data-tip="komenda: !slots">
+          Slots
+        </StyledP>
       </OptionWrapper>
       <OptionWrapper>
         <Toggle id="song" checked={song} onClick={() => setSong(!song)} />
-        <StyledP>Song</StyledP>
+        <StyledP data-place="bottom" data-tip="komendy: !song, !playlist">
+          Song
+        </StyledP>
       </OptionWrapper>
+      <ReactTooltip />
     </Wrapper>
   );
 };

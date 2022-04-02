@@ -196,7 +196,7 @@ const CheckBox = styled.input`
 
 const RequiredMessage = styled.span`
   color: ${({ theme }) => theme.mainColor};
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.s};
 `;
 
 const DashboardPage = (props) => {
@@ -463,25 +463,30 @@ const DashboardPage = (props) => {
                 placeholder="Award name"
                 {...registerSlots('name', { required: true })}
               />
+
               <StatusBox>
-                <Input
-                  style={{ width: '200px' }}
-                  type="number"
-                  max={10}
-                  min={1}
-                  defaultValue={7}
-                  placeholder="Number of emotes"
-                  {...registerSlots('emotes', { required: true })}
-                />
+                <label style={{ marginTop: '-15px' }}>
+                  Liczba emotek
+                  <Input
+                    style={{ width: '200px' }}
+                    type="number"
+                    max={10}
+                    min={1}
+                    defaultValue={7}
+                    placeholder="Number of emotes"
+                    {...registerSlots('emotes', { required: true })}
+                  />
+                </label>
                 <RequiredMessage style={{ marginRight: '15px' }}>
-                  win: {((1 / slotsEmotes / slotsEmotes) * 100).toFixed(2)}%
+                  win:{((1 / slotsEmotes / slotsEmotes) * 100).toFixed(2)}%
                 </RequiredMessage>
               </StatusBox>
+
+              <p data-tip="10min t/o przy przegranej, nic przy 2/3 emotek">Timeout za przegranie</p>
               <CheckBoxWrapper>
                 <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
                 <CheckBoxLabel htmlFor="checkbox" />
               </CheckBoxWrapper>
-              <p>{'<-'} 10min t/o przy przegranej, nic przy 2/3 emotek</p>
             </StatusBox>
             <Button type="submit">Add slots award</Button>
           </Form>

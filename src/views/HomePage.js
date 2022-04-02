@@ -167,6 +167,12 @@ const HomePage = () => {
           </Item>
           <Item>
             <p>
+              Automatycznie usuwa piosenki z kolejki, które są niedostępne w Polsce albo zostały
+              zablokowane
+            </p>
+          </Item>
+          <Item>
+            <p>
               Ustawienie Nagrody kanału, która automatyczne dodaje piosenkę za pkt kanału do kolejki
               StreamElements (zatrzymuje Spotify przy zakupieniu nagrody i wraca do piosenki po
               zakończeniu listy SR)
@@ -245,7 +251,7 @@ const HomePage = () => {
           W sprawie pomysłów co można dodać lub usprawnić, proszę pisać do DynaM1X1 na twitch albo
           Dynamix #1054 na Discord
         </h3>
-        <p>Dynamix-bot wersja: Beta 0.5.0</p>
+        <p>Dynamix-bot wersja: Beta 0.5.1</p>
       </Footer>
     </PageTemplate>
   );
