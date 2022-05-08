@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-//import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { changeCommandSwitch } from '../../actions';
 import Toggle from '../Toggle/Toggle';
