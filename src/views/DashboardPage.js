@@ -6,6 +6,8 @@ import PageTemplate from 'templates/PageTemplates';
 import { Redirect } from 'react-router';
 import { getAccount } from 'actions';
 import spotifyLogo from 'assets/spotify.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import {
   connectStreamElements,
   addChangeVolumeAward,
@@ -13,6 +15,7 @@ import {
   addSlotsAward,
 } from '../actions';
 import SwitchCommand from '../components/SwitchCommand/SwitchCommand';
+import SlotsList from '../components/SlotsList/SlotsList';
 
 const Wrapper = styled.main`
   display: grid;
@@ -253,11 +256,7 @@ const DashboardPage = (props) => {
   };
 
   const handleOnChange = (e) => {
-    console.log(e);
-    console.log(e.target, 'ssss');
-    console.log(e.target?.emotes, 'aaa');
     if (e.target?.name === 'emotes' && e.target.value) {
-      console.log(e.target.value);
       setSlotsEmotes(parseInt(e.target.value));
     }
   };
@@ -482,7 +481,9 @@ const DashboardPage = (props) => {
                 </RequiredMessage>
               </StatusBox>
 
-              <p data-tip="10min t/o przy przegranej, nic przy 2/3 emotek">Timeout za przegranie</p>
+              <p data-tip="10min t/o przy przegranej, nic przy 2/3 emotek">
+                Timeout za przegranie <FontAwesomeIcon icon={faQuestionCircle} />
+              </p>
               <CheckBoxWrapper>
                 <CheckBox {...registerSlots('withBan')} id="checkbox" type="checkbox" />
                 <CheckBoxLabel htmlFor="checkbox" />
@@ -493,18 +494,7 @@ const DashboardPage = (props) => {
           {account.slotsID && (
             <div>
               <h3>Lista nagród slots:</h3>
-              {account.slotsID.map((slot) => (
-                <p>
-                  {`nazwa: ${slot.name} | t/o za przegraną ${
-                    slot.withBan ? 'włączone' : 'wyłączone'
-                  } | ilość emotek: ${slot.emotes} (${(
-                    (1 / slot.emotes / slot.emotes) *
-                    100
-                  ).toFixed(2)}% na wina) | użyto: ${slot.times} | wygrało: ${
-                    slot.wins
-                  } | aktywne: ${slot.id ? 'tak' : 'nie'}`}
-                </p>
-              ))}
+              <SlotsList slots={account.slotsID} streamer={account.streamer} />
             </div>
           )}
         </FlexBox>

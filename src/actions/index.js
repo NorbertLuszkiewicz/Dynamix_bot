@@ -18,6 +18,9 @@ import {
   CHANGE_COMMAND_SWITCH_REQUEST,
   CHANGE_COMMAND_SWITCH_SUCCESS,
   CHANGE_COMMAND_SWITCH_FAILURE,
+  REMOVE_SLOT_REQUEST,
+  REMOVE_SLOT_SUCCESS,
+  REMOVE_SLOT_FAILURE,
   DESTROY_SESSION,
 } from 'reducers';
 
@@ -104,6 +107,18 @@ export const changeCommandSwitch = (user, body) => async (dispatch) => {
     dispatch({ type: CHANGE_COMMAND_SWITCH_SUCCESS });
   } catch (error) {
     dispatch({ type: CHANGE_COMMAND_SWITCH_FAILURE, payload: error.message });
+  }
+};
+
+export const removeSlot = (id, streamer) => async (dispatch) => {
+  try {
+    dispatch({ type: REMOVE_SLOT_REQUEST });
+
+    await axios.put(`${url}slot_remove`, { id, streamer });
+
+    dispatch({ type: REMOVE_SLOT_SUCCESS });
+  } catch (error) {
+    dispatch({ type: REMOVE_SLOT_FAILURE, payload: error.message });
   }
 };
 
