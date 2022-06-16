@@ -387,7 +387,7 @@ const DashboardPage = (props) => {
               {<RequiredMessage>{minSR}</RequiredMessage>}
             </Label>
             <Label>
-              {'Głosność po urzyciu nagrody na Spotify'}
+              {'Głosność po urzyciu nagrody na StreamElements'}
               <input
                 type="range"
                 min={0}
