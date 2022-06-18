@@ -137,6 +137,8 @@ const Select = styled.select`
   width: 140px;
   margin: 10px;
   height: 30px;
+  border-radius: 20px;
+  padding-left: 10px;
 `;
 
 const Label = styled.label`
@@ -286,8 +288,8 @@ const DashboardPage = (props) => {
             <p>Połącz się z Spotify, klikając przycisk poniżej</p>
             <p>
               <strong>Ważne</strong> na pv na discord {'(Dynamix #1054)'} wyślij mi email, na którym
-              jest spotify aby sprawdzić kliknij na spotify w prawym górnym rogu na swój nick {'->'}{' '}
-              konto {'->'} email
+              jest spotify, aby sprawdzić kliknij na spotify w prawym górnym rogu na swój nick 👉🏻
+              konto 👉🏻 email
             </p>
             <Button isSpotify={true} onClick={connectSpotify}>
               <Icon src={spotifyLogo} alt="logo Spotify" /> Spotify
@@ -346,59 +348,66 @@ const DashboardPage = (props) => {
             <br />
             "change-volume-song-award".
           </h3>
-          <Form onSubmit={handleSubmitAward(addChangeVolumeAwardSubmit)}>
-            <Label>
-              {'Domyślna głośność na Spotify'}
-              <input
-                type="range"
-                min={0}
-                max={100}
-                defaultValue={min}
-                onChangeText={() => setMin(getValues('min'))}
-                onMouseUp={(event) => setMin(event.target.value)}
-                {...registerAward('min')}
-              />
-              {<RequiredMessage>{min}</RequiredMessage>}
-            </Label>
-            <Label>
-              {'Głosność po urzyciu nagrody na Spotify'}
-              <input
-                type="range"
-                min={0}
-                max={100}
-                defaultValue={max}
-                onChange={() => setMax(getValues('max'))}
-                onMouseUp={(event) => setMax(event.target.value)}
-                {...registerAward('max')}
-              />
-              {<RequiredMessage>{max}</RequiredMessage>}
-            </Label>
-            <Label>
-              {'Domyślna głośność na StreamElements'}
-              <input
-                type="range"
-                min={0}
-                max={100}
-                defaultValue={minSR}
-                onChange={() => setMinSR(getValues('minSR'))}
-                onMouseUp={(event) => setMinSR(event.target.value)}
-                {...registerAward('minSR')}
-              />
-              {<RequiredMessage>{minSR}</RequiredMessage>}
-            </Label>
-            <Label>
-              {'Głosność po urzyciu nagrody na StreamElements'}
-              <input
-                type="range"
-                min={0}
-                max={100}
-                defaultValue={maxSR}
-                onChange={() => setMaxSR(getValues('maxSR'))}
-                onMouseUp={(event) => setMaxSR(event.target.value)}
-                {...registerAward('maxSR')}
-              />
-              {<RequiredMessage>{maxSR}</RequiredMessage>}
-            </Label>
+          <Form
+            style={{ maxWidth: '800px' }}
+            onSubmit={handleSubmitAward(addChangeVolumeAwardSubmit)}
+          >
+            <GridBox style={{ marginTop: '25px' }}>
+              <Label>
+                {'Domyślna głośność na Spotify'}
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  defaultValue={min}
+                  onChangeText={() => setMin(getValues('min'))}
+                  onMouseUp={(event) => setMin(event.target.value)}
+                  {...registerAward('min')}
+                />
+                {<RequiredMessage>{min}</RequiredMessage>}
+              </Label>
+              <Label>
+                {'Głosność po użyciu nagrody na Spotify'}
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  defaultValue={max}
+                  onChange={() => setMax(getValues('max'))}
+                  onMouseUp={(event) => setMax(event.target.value)}
+                  {...registerAward('max')}
+                />
+                {<RequiredMessage>{max}</RequiredMessage>}
+              </Label>
+            </GridBox>
+            <GridBox>
+              <Label>
+                {'Domyślna głośność na StreamElements'}
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  defaultValue={minSR}
+                  onChange={() => setMinSR(getValues('minSR'))}
+                  onMouseUp={(event) => setMinSR(event.target.value)}
+                  {...registerAward('minSR')}
+                />
+                {<RequiredMessage>{minSR}</RequiredMessage>}
+              </Label>
+              <Label>
+                {'Głosność po użyciu nagrody na StreamElements'}
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  defaultValue={maxSR}
+                  onChange={() => setMaxSR(getValues('maxSR'))}
+                  onMouseUp={(event) => setMaxSR(event.target.value)}
+                  {...registerAward('maxSR')}
+                />
+                {<RequiredMessage>{maxSR}</RequiredMessage>}
+              </Label>
+            </GridBox>
             <Label style={{ maxWidth: '300px' }}>
               {'Czas trwania w sekundach'}
               <Input
@@ -409,7 +418,7 @@ const DashboardPage = (props) => {
               />
             </Label>
 
-            <Button type="submit">Zapamiętaj ustawienia</Button>
+            <Button type="submit">Save options</Button>
           </Form>
         </FlexBox>
         <h3>
@@ -443,7 +452,7 @@ const DashboardPage = (props) => {
             ))}
           </div>
         </FlexBox>
-        <h3>Dodaj nagrody z szansą na wygraną</h3>
+        <h3>Dodaj nagrody typu slots</h3>
         <FlexBox>
           <p>
             Aby Aktywować nagrodę z Slots, stwórz ją na twitch, następnie wypełnij i wyślij

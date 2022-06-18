@@ -109,9 +109,6 @@ const HomePage = () => {
             <p>Komenda sprawdzająca, czy aktualnie bot działa. Powinno zwrócić "Bot Works!"</p>
           </Item>
           <Item>
-            <p>Bot musi być moderatorem czatu, aby działał poprawnie</p>
-          </Item>
-          <Item>
             <CommandTitle>!slots</CommandTitle>
             <p>Zwraca losowanie 3 emotek, szansa na wygranie 2%, cooldown 3 min na osobę</p>
           </Item>
@@ -174,14 +171,14 @@ const HomePage = () => {
           <Item>
             <p>
               Ustawienie Nagrody kanału, która automatyczne dodaje piosenkę za pkt kanału do kolejki
-              StreamElements (zatrzymuje Spotify przy zakupieniu nagrody i wraca do piosenki po
+              StreamElements (zatrzymuje Spotify po zakupieniu nagrody i wraca do piosenki po
               zakończeniu listy SR)
             </p>
           </Item>
           <Item>
             <p>
-              Ustawienie Nagrody kanału, która automatyczne pomija piosenkę z SR/Spotify przy kupnie
-              nagrody
+              Ustawienie Nagrody kanału, która automatyczne pomija piosenkę z SR/Spotify po
+              zakupnieniu nagrody
             </p>
           </Item>
           <Item>
@@ -248,8 +245,8 @@ const HomePage = () => {
       </Wrapper>
       <Footer>
         <h3>
-          W sprawie pomysłów co można dodać lub usprawnić, proszę pisać do DynaM1X1 na twitch albo
-          Dynamix #1054 na Discord
+          W sprawie pomysłów oraz probremów, proszę pisać do DynaM1X1 na twitch albo Dynamix #1054
+          na discord
         </h3>
         <p>Dynamix-bot wersja: Beta 0.5.1</p>
       </Footer>
