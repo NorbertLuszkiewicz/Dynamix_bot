@@ -478,7 +478,7 @@ const DashboardPage = (props) => {
                   <Input
                     style={{ width: '200px' }}
                     type="number"
-                    max={10}
+                    max={15}
                     min={1}
                     defaultValue={7}
                     placeholder="Number of emotes"

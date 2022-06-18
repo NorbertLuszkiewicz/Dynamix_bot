@@ -248,7 +248,7 @@ const HomePage = () => {
           W sprawie pomysłów oraz probremów, proszę pisać do DynaM1X1 na twitch albo Dynamix #1054
           na discord
         </h3>
-        <p>Dynamix-bot wersja: Beta 0.5.1</p>
+        <p>Dynamix-bot wersja: Beta 0.6.1</p>
       </Footer>
     </PageTemplate>
   );
